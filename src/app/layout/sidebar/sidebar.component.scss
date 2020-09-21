@@ -14,22 +14,3 @@ $sidebar-title-height: 80px;
   overflow-x: hidden; /* Disable horizontal scroll */
 }
 
-.sidebar-title {
-  background-color: $theme-color-5;
-  height: $sidebar-title-height;
-  position: fixed;
-  width: $sidebar-width;
-}
-
-.sidebar-title-text {
-  font-family: "Product Sans Regular", sans-serifi, serif;
-  font-size: 48px;
-  margin: auto;
-  text-align: center;
-  line-height: $sidebar-title-height; /* Vertically alligns text */
-  color: white;
-}
-
-hr.solid {
-  border-top: 3px solid #bbb;
-}
