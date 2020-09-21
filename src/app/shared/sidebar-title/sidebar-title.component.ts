@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-sidebar-title',
@@ -6,6 +6,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./sidebar-title.component.scss']
 })
 export class SidebarTitleComponent implements OnInit {
+
+  @Input() title = 'default';
 
   constructor() { }
 

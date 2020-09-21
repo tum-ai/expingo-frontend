@@ -8,6 +8,10 @@ import { SidebarTitleComponent } from './sidebar-title/sidebar-title.component';
   declarations: [SidebarTitleComponent],
   imports: [
     CommonModule
+  ],
+  exports: [
+      SidebarTitleComponent
   ]
 })
-export class SharedModule { }
+export class SharedModules { }
+
