@@ -1,0 +1,18 @@
+@import "../../../styles.scss";
+
+.topnav {
+  height: 75px;
+  width: 100%;
+  left: 0;
+  position: fixed;
+  top: 0;
+  background-color: $theme-color-4;
+  color: white;
+}
+
+.top-bar-logo {
+  max-height: 55px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  margin-left: 10px;
+}

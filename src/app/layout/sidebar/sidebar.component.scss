@@ -1,0 +1,35 @@
+@import "../../../styles.scss";
+
+$sidebar-width: 360px;
+$sidebar-title-height: 80px;
+
+.sidebar {
+  height: 100%;
+  margin-top: 75px;
+  width: $sidebar-width;
+  position: fixed;
+  top: 0; /* Stay at the top */
+  right: 0;
+  background-color: $theme-color-5;
+  overflow-x: hidden; /* Disable horizontal scroll */
+}
+
+.sidebar-title {
+  background-color: $theme-color-5;
+  height: $sidebar-title-height;
+  position: fixed;
+  width: $sidebar-width;
+}
+
+.sidebar-title-text {
+  font-family: "Product Sans Regular", sans-serifi, serif;
+  font-size: 48px;
+  margin: auto;
+  text-align: center;
+  line-height: $sidebar-title-height; /* Vertically alligns text */
+  color: white;
+}
+
+hr.solid {
+  border-top: 3px solid #bbb;
+}

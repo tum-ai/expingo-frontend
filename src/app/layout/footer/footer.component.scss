@@ -1,0 +1,12 @@
+@import "../../../styles.scss";
+
+.footer {
+  position: fixed;
+  background-color: $theme-color-4;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  color: white;
+  text-align: center;
+  font-family: "Product Sans Regular", sans-serifi, serif;
+}
