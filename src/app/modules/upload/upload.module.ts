@@ -14,7 +14,7 @@ import {MatButtonModule} from '@angular/material/button';
         CommonModule,
         UploadRoutingModule,
         SharedModules,
-        MatButtonModule
+        MatButtonModule,
     ],
     providers: [],
 })

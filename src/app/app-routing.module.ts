@@ -6,11 +6,6 @@ import {ContentLayoutComponent} from './layout/content-layout/content-layout.com
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'upload',
-    pathMatch: 'full'
-  },
-  {
-    path: '',
     component: ContentLayoutComponent,
     children: [
       {
@@ -19,7 +14,19 @@ const routes: Routes = [
             import('./modules/upload/upload.module').then(m => m.UploadModule)
       }
     ]
-  }
+  },
+  {
+    path: '',
+    component: ContentLayoutComponent,
+    children: [
+      {
+        path: 'segmentation',
+        loadChildren: () =>
+            import('./modules/segmentation/segmentation.module').then(m => m.SegmentationModule)
+      }
+    ]
+  },
+  { path: '**', redirectTo: 'upload', pathMatch: 'full' },
 ];
 
 @NgModule({

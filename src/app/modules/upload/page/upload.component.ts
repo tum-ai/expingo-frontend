@@ -27,7 +27,5 @@ export class UploadComponent implements OnInit {
     this.imageService.displayImage(this.file);
   }
 
-  onNext() {
 
-  }
 }

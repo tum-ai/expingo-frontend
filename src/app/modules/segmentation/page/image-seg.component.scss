@@ -1,0 +1,32 @@
+@import '../../../layout/sidebar/sidebar.component';
+
+
+.title-text {
+  font-family: "Product Sans Regular", sans-serifi, serif;
+  font-size: 22px;
+  margin: 50px auto auto auto;
+  text-align: center;
+  line-height: $sidebar-title-height; /* Vertically alligns text */
+  color: black;
+  padding: 30px;
+}
+
+.checkbox-container {
+  padding-left: 55px;
+}
+
+#submit-button-container {
+  display: flex;
+}
+
+#submitButton {
+  height: 60px;
+  width: 120px;
+  margin: auto;
+  background-color: $theme-color-4;
+  color: white;
+  border-style: solid;
+  font-size: 28px;
+  box-shadow: 8px 8px 3px silver;
+}
+

@@ -8,7 +8,7 @@ import {ImageService} from '../../core/service/image.service';
 })
 export class ImageDisplayComponent implements OnInit {
 
-  imageSrc = '../../../assets/images/street.jpg';
+  imageSrc = '';
 
   constructor(private imageService: ImageService) {
     this.imageService.imageChanged.subscribe(
@@ -19,6 +19,7 @@ export class ImageDisplayComponent implements OnInit {
   }
 
   ngOnInit(): void {
+      this.imageService.reloadCurrentImage();
   }
 
 }

@@ -3,9 +3,9 @@
 
 
 .sidebar-title {
-  background-color: $theme-color-5;
   height: $sidebar-title-height;
   width: $sidebar-width;
+  padding: 10px;
 }
 
 .sidebar-title-text {
@@ -14,5 +14,5 @@
   margin: auto;
   text-align: center;
   line-height: $sidebar-title-height; /* Vertically alligns text */
-  color: white;
+  color: black
 }

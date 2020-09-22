@@ -1,16 +1,20 @@
 @import "../../../styles.scss";
 
 $sidebar-width: 25vw;
-$sidebar-title-height: 80px;
+$sidebar-title-height: 40px;
 
 .sidebar {
-  height: 100%;
-  margin-top: 75px;
+  margin-top: 80px;
+  margin-right: 5px;
   width: $sidebar-width;
   position: fixed;
   top: 0; /* Stay at the top */
   right: 0;
-  background-color: $theme-color-5;
   overflow-x: hidden; /* Disable horizontal scroll */
+  border: solid;
+  bottom: 0;
+  margin-bottom: 55px;
+  display: flex;
+  box-shadow: 5px 5px 10px silver;
 }
 

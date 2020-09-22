@@ -1,4 +1,7 @@
 <app-sidebar-title [title]="componentTitle"></app-sidebar-title>
+<div class="title-text">
+    <p>Select a local image from your computer.</p>
+</div>
 <div class="fab-button-container">
     <button (click)="uploadImage()" mat-fab color="accent" class="fab-button">
         +
@@ -7,10 +10,13 @@
 
 
 </div>
+<div class="title-text">
+    <p>Start with the Segmentation of Objects!</p>
+</div>
 <div class="nextButtonContainer">
     <button
             id="nextButton"
-            (click)="onNext()"
+            [routerLink]="'/segmentation'"
             mat-stroked-button
     >Next
     </button>

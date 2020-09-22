@@ -1,0 +1,24 @@
+<app-sidebar-title [title]="componentTitle"></app-sidebar-title>
+<div class="title-text">
+    <p>Select the object you want to mask out.</p>
+</div>
+
+<div class="checkbox-container">
+    <ul style="list-style-type: none">
+        <li *ngFor="let object of checkboxes">
+            <mat-checkbox [formControl]="object.form">{{object.name}}</mat-checkbox>
+        </li>
+    </ul>
+</div>
+
+<div class="title-text">
+    <p>Generate Masks for selected objects.</p>
+</div>
+<div id="submit-button-container">
+    <button
+        id="submitButton"
+        (click)="onSubmit()"
+        mat-stroked-button
+    >Submit
+</button>
+</div>

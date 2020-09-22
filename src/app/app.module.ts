@@ -9,6 +9,7 @@ import { ContentLayoutComponent } from './layout/content-layout/content-layout.c
 import { SidebarComponent } from './layout/sidebar/sidebar.component';
 import { ImageDisplayComponent } from './layout/image-display/image-display.component';
 import { MatIconModule } from '@angular/material/icon';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 
 @NgModule({
@@ -24,6 +25,7 @@ import { MatIconModule } from '@angular/material/icon';
     BrowserModule,
     AppRoutingModule,
     MatIconModule,
+    BrowserAnimationsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

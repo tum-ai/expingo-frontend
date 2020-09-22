@@ -3,13 +3,15 @@
 
 .fab-button-container {
   width: $sidebar-width;
-  margin-top: 100px;
   display: flex;
 }
 
 .fab-button {
   margin: auto;
   font-size: 30px;
+  background-color: $theme-color-4;
+  color: white;
+  box-shadow: 8px 8px 3px silver;
 }
 
 .file-picker {
@@ -17,14 +19,27 @@
 }
 
 #nextButton {
-  border: 0;
   height: 60px;
   width: 100px;
   margin: auto;
+  background-color: $theme-color-4;
+  color: white;
+  border-style: solid;
   font-size: 28px;
+  box-shadow: 8px 8px 3px silver;
 }
 
 .nextButtonContainer {
   display: flex;
-  margin-top: 500px
+  margin: auto;
+}
+
+.title-text {
+  font-family: "Product Sans Regular", sans-serifi, serif;
+  font-size: 22px;
+  margin: 100px auto auto auto;
+  text-align: center;
+  line-height: $sidebar-title-height; /* Vertically alligns text */
+  color: black;
+  padding: 10px;
 }
