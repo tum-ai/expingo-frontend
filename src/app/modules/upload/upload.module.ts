@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { UploadComponent } from './page/upload.component';
 import { UploadRoutingModule } from './upload.routing';
 import {SharedModules} from '../../shared/shared.module';
+import {MatButtonModule} from '@angular/material/button';
 
 
 @NgModule({
@@ -12,7 +13,8 @@ import {SharedModules} from '../../shared/shared.module';
     imports: [
         CommonModule,
         UploadRoutingModule,
-        SharedModules
+        SharedModules,
+        MatButtonModule
     ],
     providers: [],
 })
