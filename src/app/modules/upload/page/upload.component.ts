@@ -1,4 +1,5 @@
 import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
+import { ImageService } from '../../../core/service/image.service';
 
 @Component({
   selector: 'app-upload',
@@ -8,12 +9,13 @@ import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 export class UploadComponent implements OnInit {
 
   componentTitle = 'Upload Image';
-  private file = '';
+  private file: any;
   @ViewChild('FileSelectInputDialog') fileSelectInputDialog: ElementRef;
 
-  constructor() { }
+  constructor(private imageService: ImageService) { }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+  }
 
   uploadImage() {
     const dialog: HTMLElement = this.fileSelectInputDialog.nativeElement;
@@ -22,6 +24,10 @@ export class UploadComponent implements OnInit {
 
   onFileChanged(event: any) {
     this.file = event.target.files[0];
-    console.log(this.file);
+    this.imageService.displayImage(this.file);
+  }
+
+  onNext() {
+
   }
 }

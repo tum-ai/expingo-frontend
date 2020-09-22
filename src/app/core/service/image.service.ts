@@ -1,15 +1,19 @@
-import { Injectable } from '@angular/core';
+import {EventEmitter, Injectable, Output} from '@angular/core';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ImageService {
 
-  imageSrc = '';
-
+  @Output() imageChanged = new EventEmitter();
   constructor() { }
 
-  displayImage(src: string) {
-    this.imageSrc = src;
+  displayImage(imageFile: any) {
+    console.log('Displaying Image: ' + imageFile.name);
+    const fileReader = new FileReader();
+    fileReader.onloadend = (e) => {
+      this.imageChanged.emit(fileReader.result);
+    };
+    fileReader.readAsDataURL(imageFile);
   }
 }

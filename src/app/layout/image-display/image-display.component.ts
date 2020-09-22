@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {ImageService} from '../../core/service/image.service';
 
 @Component({
   selector: 'app-image-display',
@@ -7,7 +8,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ImageDisplayComponent implements OnInit {
 
-  constructor() { }
+  imageSrc = '../../../assets/images/street.jpg';
+
+  constructor(private imageService: ImageService) {
+    this.imageService.imageChanged.subscribe(
+        (src) => {
+          this.imageSrc = src;
+        }
+    );
+  }
 
   ngOnInit(): void {
   }

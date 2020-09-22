@@ -1,5 +1,8 @@
+@import '../../../../styles';
+@import '../../../layout/sidebar/sidebar.component';
+
 .fab-button-container {
-  width: 100%;
+  width: $sidebar-width;
   margin-top: 100px;
   display: flex;
 }
@@ -13,3 +16,15 @@
   display: none;
 }
 
+#nextButton {
+  border: 0;
+  height: 60px;
+  width: 100px;
+  margin: auto;
+  font-size: 28px;
+}
+
+.nextButtonContainer {
+  display: flex;
+  margin-top: 500px
+}
