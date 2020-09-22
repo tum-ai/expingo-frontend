@@ -1,5 +1,18 @@
 @import "../../../styles.scss";
+@import "../sidebar/sidebar.component";
 
 .image-display-area {
   background-color: $theme-color-2;
+  margin-top: 200px; /* Top Bar */
+  height: 100%;
+  top: 0;
+  left: 0;
+  overflow-x: hidden;
+  width: 75vw;
+  display: flex;
+}
+
+.main-image {
+  margin: auto
+
 }
