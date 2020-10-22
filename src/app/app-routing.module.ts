@@ -26,6 +26,17 @@ const routes: Routes = [
       }
     ]
   },
+  {
+    path: '',
+    component: ContentLayoutComponent,
+    children: [
+      {
+        path: 'masking',
+        loadChildren: () =>
+            import('./modules/masking/masking.module').then(m => m.MaskingModule)
+      }
+    ]
+  },
   { path: '**', redirectTo: 'upload', pathMatch: 'full' },
 ];
 

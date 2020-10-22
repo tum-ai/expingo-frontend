@@ -3,13 +3,25 @@
     <p>Select the object you want to mask out.</p>
 </div>
 
-<div class="checkbox-container">
-    <ul style="list-style-type: none">
-        <li *ngFor="let object of checkboxes">
-            <mat-checkbox [formControl]="object.form">{{object.name}}</mat-checkbox>
-        </li>
-    </ul>
+<div class="row">
+    <div class="column">
+    <div>
+        <ul style="list-style-type: none">
+            <li *ngFor="let object of checkboxesLeft()">
+                <mat-checkbox [formControl]="object.form">{{object.name}}</mat-checkbox>
+            </li>
+        </ul>
+    </div></div>
+    <div class="column">
+        <div>
+        <ul style="list-style-type: none">
+            <li *ngFor="let object of checkboxesRight()">
+                <mat-checkbox [formControl]="object.form">{{object.name}}</mat-checkbox>
+            </li>
+        </ul>
+    </div></div>
 </div>
+
 
 <div class="title-text">
     <p>Generate Masks for selected objects.</p>

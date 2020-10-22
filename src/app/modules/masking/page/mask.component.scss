@@ -11,26 +11,10 @@
   padding: 30px;
 }
 
+.mask-checkboxes {
+  padding-left: 30px;
+}
 
-#submit-button-container {
+.spinner-container {
   display: flex;
-}
-
-#submitButton {
-  height: 60px;
-  width: 120px;
-  margin: auto;
-  background-color: $theme-color-4;
-  color: white;
-  border-style: solid;
-  font-size: 28px;
-  box-shadow: 8px 8px 3px silver;
-}
-
-.row {
-  display: flex;
-}
-
-.column {
-  flex: 50%;
 }

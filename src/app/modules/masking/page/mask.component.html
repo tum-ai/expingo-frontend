@@ -1,0 +1,17 @@
+<app-sidebar-title [title]="componentTitle"></app-sidebar-title>
+<div class="title-text">
+    <p>Select the masks you want to use.</p>
+</div>
+
+<div class="mask-checkboxes">
+    <div>
+        <ul style="list-style-type: none">
+            <li *ngFor="let object of masks()">
+                <mat-checkbox [formControl]="object.form">{{object.name}}</mat-checkbox>
+            </li>
+        </ul>
+    </div>
+</div>
+<div class="spinner-container">
+    <mat-spinner style="margin: auto"></mat-spinner>
+</div>
