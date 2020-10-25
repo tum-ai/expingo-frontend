@@ -128,5 +128,8 @@
       }
     }
   },
-  "defaultProject": "expingo-frontend"
+  "defaultProject": "expingo-frontend",
+  "cli": {
+    "analytics": false
+  }
 }

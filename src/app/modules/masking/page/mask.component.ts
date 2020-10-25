@@ -23,6 +23,9 @@ export class MaskComponent implements OnInit {
     console.log(selectedMasks);
     const image = this.imageService.image;
     // TODO send image to server
+    /* CURL Request looks like: 
+    "https://expingo-mask-service-oztyeiy7sa-uc.a.run.app/getMasks/?classes=person" -H  "accept: application/json" -H  "Content-Type: multipart/form-data" -F "file=@jakobkruse.png;type=image/png"
+     */
     // Wait for processing
   }
 
