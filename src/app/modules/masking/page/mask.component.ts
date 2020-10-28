@@ -1,7 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import {ImageService} from '../../../core/service/image.service';
+import {ApiService} from "../../../services/api.service";
 import {FormControl} from '@angular/forms';
 import {ActivatedRoute} from '@angular/router';
+import {Observable} from 'rxjs';
 
 @Component({
   selector: 'app-mask',
@@ -14,19 +16,28 @@ export class MaskComponent implements OnInit {
   computedMasks = [
     {name: 'TestMask', form: new FormControl()}
   ];
-  constructor(private imageService: ImageService, private route: ActivatedRoute) {
+  
+  constructor(private imageService: ImageService, private route: ActivatedRoute,
+              private apiService: ApiService) {
 
   }
 
+  public response;
   ngOnInit(): void {
     const selectedMasks = this.route.snapshot.queryParamMap.get('0');
     console.log(selectedMasks);
     const image = this.imageService.image;
-    // TODO send image to server
-    /* CURL Request looks like: 
-    "https://expingo-mask-service-oztyeiy7sa-uc.a.run.app/getMasks/?classes=person" -H  "accept: application/json" -H  "Content-Type: multipart/form-data" -F "file=@jakobkruse.png;type=image/png"
-     */
-    // Wait for processing
+    console.log("Starting api request");
+    this.apiService.getMasks(selectedMasks, image).subscribe(
+        data => {
+          this.response = data;
+          console.log("Successful API call");
+        },
+        error => {
+          console.error("Error during API call");
+          return Observable.throw(error);
+        }
+    );
   }
 
   masks() {
