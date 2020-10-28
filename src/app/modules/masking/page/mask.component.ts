@@ -3,7 +3,7 @@ import {ImageService} from '../../../core/service/image.service';
 import {ApiService} from "../../../services/api.service";
 import {FormControl} from '@angular/forms';
 import {ActivatedRoute} from '@angular/router';
-import {Observable} from 'rxjs';
+import {Observable, throwError} from 'rxjs';
 
 @Component({
   selector: 'app-mask',
@@ -32,10 +32,10 @@ export class MaskComponent implements OnInit {
         data => {
           this.response = data;
           console.log("Successful API call");
+          console.log(this.response);
         },
         error => {
           console.error("Error during API call");
-          return Observable.throw(error);
         }
     );
   }
