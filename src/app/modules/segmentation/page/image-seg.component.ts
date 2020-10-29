@@ -17,12 +17,12 @@ export interface CheckboxWithFrom {
 export class ImageSegComponent implements OnInit {
   componentTitle = 'Segmentation';
   checkboxes: CheckboxWithFrom[] = [
-      {name: 'Car', form: new FormControl()},
-      {name: 'Human', form: new FormControl()},
-      {name: 'Tree', form: new FormControl()},
-      {name: 'Traffic Light', form: new FormControl()},
-      {name: 'Plane', form: new FormControl()},
-      {name: 'Cat', form: new FormControl()},
+      {name: 'car', form: new FormControl()},
+      {name: 'person', form: new FormControl()},
+      {name: 'cat', form: new FormControl()},
+      {name: 'dog', form: new FormControl()},
+      {name: 'airplane', form: new FormControl()},
+      {name: 'toilet', form: new FormControl()},
   ];
 
   constructor(
