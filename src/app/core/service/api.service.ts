@@ -17,14 +17,11 @@ export class ApiService {
     console.log(file);
     let params = new HttpParams().set('classes', classes);
     const httpOptions = {
-      headers: new HttpHeaders({
-        'Content-Type': 'multipart/form-data',
-        'accept': 'application/json'
-      }),
       params:params
     };
     const formData: FormData = new FormData();
     formData.set('file', file);
+    
     return this.http.post<any>(this.maskingURL, formData, httpOptions)
   }
 }
