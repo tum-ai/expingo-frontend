@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import {ImageService} from '../../../core/service/image.service';
-import {ApiService} from "../../../services/api.service";
+import {ApiService} from "../../../core/service/api.service";
 import {FormControl} from '@angular/forms';
 import {ActivatedRoute} from '@angular/router';
 import {Observable, throwError} from 'rxjs';
@@ -24,11 +24,14 @@ export class MaskComponent implements OnInit {
 
   public response;
   ngOnInit(): void {
+    this.send_file(this.imageService.image)
+  }
+  
+  send_file(file) {
     const selectedMasks = this.route.snapshot.queryParamMap.get('0');
     console.log(selectedMasks);
-    const image = this.imageService.image;
     console.log("Starting api request");
-    this.apiService.getMasks(selectedMasks, image).subscribe(
+    this.apiService.getMasks(selectedMasks, file).subscribe(
         data => {
           this.response = data;
           console.log("Successful API call");

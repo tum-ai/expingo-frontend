@@ -9,8 +9,8 @@ import { ImageService } from '../../../core/service/image.service';
 export class UploadComponent implements OnInit {
 
   componentTitle = 'Upload Image';
-  private file: any;
-  @ViewChild('FileSelectInputDialog') fileSelectInputDialog: ElementRef;
+  file: any;
+  @ViewChild("fileUpload", {static: false}) fileUpload: ElementRef;
 
   constructor(private imageService: ImageService) { }
 
@@ -18,7 +18,7 @@ export class UploadComponent implements OnInit {
   }
 
   uploadImage() {
-    const dialog: HTMLElement = this.fileSelectInputDialog.nativeElement;
+    const dialog = this.fileUpload.nativeElement;
     dialog.click();
   }
 
