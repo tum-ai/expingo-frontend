@@ -7,8 +7,8 @@ import { catchError, retry } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class ApiService {
-//  private readonly maskingURL = 'https://expingo-mask-service-oztyeiy7sa-uc.a.run.app/getMasks/';
-  private readonly maskingURL = 'http://localhost:8080/getMasks/';
+  private readonly maskingURL = 'https://expingo-mask-service-oztyeiy7sa-uc.a.run.app/getMasks/';
+//  private readonly maskingURL = 'http://localhost:8080/getMasks/';
   private readonly impaintingURL = '';
   constructor(private http: HttpClient) { }
   

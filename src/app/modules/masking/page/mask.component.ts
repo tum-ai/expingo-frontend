@@ -13,9 +13,7 @@ import {Observable, throwError} from 'rxjs';
 export class MaskComponent implements OnInit {
 
   componentTitle = 'Masking';
-  computedMasks = [
-    {name: 'TestMask', form: new FormControl()}
-  ];
+  computedMasks = [];
   
   constructor(private imageService: ImageService, private route: ActivatedRoute,
               private apiService: ApiService) {
@@ -23,6 +21,7 @@ export class MaskComponent implements OnInit {
   }
 
   public response;
+  stillLoading: boolean;
   ngOnInit(): void {
     this.send_file(this.imageService.image)
   }
@@ -31,11 +30,14 @@ export class MaskComponent implements OnInit {
     const selectedMasks = this.route.snapshot.queryParamMap.get('0');
     console.log(selectedMasks);
     console.log("Starting api request");
+    this.stillLoading = true;
     this.apiService.getMasks(selectedMasks, file).subscribe(
         data => {
           this.response = data;
           console.log("Successful API call");
           console.log(this.response);
+          this.stillLoading = false;
+          this.extractMasks(this.response);
         },
         error => {
           console.error("Error during API call");
@@ -43,6 +45,18 @@ export class MaskComponent implements OnInit {
     );
   }
 
+  private extractMasks(response: any) {
+    let masks = response.masks;
+    let classes = response.classes;
+    let index = 1;
+    for (let cl of classes) {
+      this.computedMasks.length = 0;
+      this.computedMasks.push({name: 'Mask' + index + ': ' +cl, form: new FormControl()});
+      index++;
+    }
+  }
+
+  
   masks() {
     return this.computedMasks;
   }
