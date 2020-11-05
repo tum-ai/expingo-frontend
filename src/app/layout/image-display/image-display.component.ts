@@ -9,6 +9,7 @@ import {ImageService} from '../../core/service/image.service';
 export class ImageDisplayComponent implements OnInit {
 
   imageSrc = '';
+  masks = [];
 
   constructor(private imageService: ImageService) {
     this.imageService.imageChanged.subscribe(
@@ -20,6 +21,11 @@ export class ImageDisplayComponent implements OnInit {
 
   ngOnInit(): void {
       this.imageService.reloadCurrentImage();
+  }
+  
+  image_masks() {
+      this.masks = this.imageService.getMasks();
+      return this.masks;
   }
 
 }
