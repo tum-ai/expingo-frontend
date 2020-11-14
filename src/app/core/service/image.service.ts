@@ -7,7 +7,7 @@ export class ImageService {
 
   @Output() imageChanged = new EventEmitter();
   image: any;
-  masks: any;
+  combinedMask: any;
   display_image: any = '../../../assets/images/street.jpg';
   constructor() { }
 
@@ -24,12 +24,8 @@ export class ImageService {
   reloadCurrentImage() {
     this.imageChanged.emit(this.display_image);
   }
-  
-  setMasks(masks: any) {
-    this.masks = masks;
-  }
-  
-  getMasks() {
-    return this.masks;
+
+  public setCombinedMask(combinedMask) {
+    this.combinedMask = combinedMask;
   }
 }

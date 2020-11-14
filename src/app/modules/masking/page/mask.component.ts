@@ -5,6 +5,7 @@ import {FormControl} from '@angular/forms';
 import {ActivatedRoute} from '@angular/router';
 import {Observable, throwError} from 'rxjs';
 import {MatCheckboxChange} from '@angular/material/checkbox';
+import mergeImages from 'merge-images';
 
 @Component({
   selector: 'app-mask',
@@ -14,13 +15,13 @@ import {MatCheckboxChange} from '@angular/material/checkbox';
 export class MaskComponent implements OnInit {
 
   componentTitle = 'Masking';
-  computedMasks = [];
-  masks = [];
-  classes = [];
+  computedMasks = [];     // This variable contains names and form controls for the masks
+  masks = [];             // The masks are stored here after the API call
+  classes = [];           // The classese for the masks
+  imageSrc;
   
   constructor(private imageService: ImageService, private route: ActivatedRoute,
               private apiService: ApiService) {
-
   }
 
   public response;
@@ -52,8 +53,8 @@ export class MaskComponent implements OnInit {
     this.masks = response.masks;
     this.classes = response.classes;
     let index = 1;
+    this.computedMasks.length = 0;
     for (let cl of this.classes) {
-      this.computedMasks.length = 0;
       this.computedMasks.push({name: 'Mask' + index + ': ' +cl, form: new FormControl()});
       index++;
     }
@@ -81,6 +82,11 @@ export class MaskComponent implements OnInit {
       }
       index++;
     }
-    this.imageService.setMasks(selectedMasks);
+    mergeImages(selectedMasks)
+        .then(b64 => {
+          this.apiService.setCombinedMask(b64);
+          this.imageService.setCombinedMask(b64);
+          this.imageService.reloadCurrentImage();
+        });
   }
 }
