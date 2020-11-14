@@ -15,7 +15,11 @@ export class UploadComponent implements OnInit {
 
   constructor(private imageService: ImageService) { }
 
-  ngOnInit(): void { }
+  ngOnInit(): void {
+    if (this.imageService.currentImage) {
+      this.imageUploaded = true;
+    }
+  }
 
   uploadImage() {
     const dialog = this.fileUpload.nativeElement;
