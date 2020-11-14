@@ -5,6 +5,7 @@ import {FormControl} from '@angular/forms';
 import {ActivatedRoute, Router} from '@angular/router';
 import {MatCheckboxChange} from '@angular/material/checkbox';
 import mergeImages from 'merge-images';
+import {PaintingRequestStorageService, } from '../../../core/service/painting-request-storage.service';
 
 @Component({
   selector: 'app-mask',
@@ -20,7 +21,8 @@ export class MaskComponent implements OnInit {
   classes = [];           // The classese for the masks
 
   constructor(private imageService: ImageService, private route: ActivatedRoute,
-              private apiService: MaskService, private router: Router) {
+              private apiService: MaskService, private router: Router,
+              private paintingRequestStorage: PaintingRequestStorageService) {
   }
 
   stillLoading: boolean;
@@ -87,8 +89,10 @@ export class MaskComponent implements OnInit {
 
     onSubmit() {
       console.log('Paint!');
-
+      this.paintingRequestStorage.storeRequest(
+        this.imageService.getCurrentImage(),
+        this.imageService.getCombinedMask()
+    );
       this.router.navigate(['/painting']);
-
     }
 }

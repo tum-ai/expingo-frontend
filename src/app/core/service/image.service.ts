@@ -9,10 +9,14 @@ export class ImageService {
 
   image: any;
   combinedMask: any;
-  currentImage: any;
+  private currentImage: any;
 
   constructor() {
     this.combinedMask = '';
+  }
+
+  getCurrentImage(): any {
+    return this.currentImage;
   }
 
   uploadImage(imageFile: any) {
@@ -22,9 +26,17 @@ export class ImageService {
     fileReader.onloadend = (e) => {
       this.currentImage = fileReader.result;
       this.displayCurrentImage();
-
     };
     fileReader.readAsDataURL(imageFile);
+  }
+
+  setImageFromBase64(base64String) {
+    this.currentImage = base64String;
+    this.displayCurrentImage();
+  }
+
+  resetMasks() {
+    this.combinedMask = '';
   }
 
   displayCurrentImage() {

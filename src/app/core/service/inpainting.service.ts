@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import {Observable} from "rxjs";
-import {HttpClient} from "@angular/common/http";
+import {Observable} from 'rxjs';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
@@ -12,9 +12,7 @@ export class InpaintingService {
   constructor(private http: HttpClient) { }
 
   paintImage(image, mask): Observable<any> {
-    const formData: FormData = new FormData();
-    formData.set('image', image);
-    formData.set('mask', mask);
-    return this.http.post<any>(this.impaintingURL, formData);
+    const headers = new HttpHeaders({'Content-Type': 'application/json', 'accept': 'image/png'})
+    return this.http.post<any>(this.paintingURL, {image: image, mask: mask}, {responseType: "blob" as "json", headers: headers});
   }
 }
