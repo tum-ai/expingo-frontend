@@ -2,7 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import {ImageService} from '../../../core/service/image.service';
 import {ApiService} from "../../../core/service/api.service";
 import {FormControl} from '@angular/forms';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {Observable, throwError} from 'rxjs';
 import {MatCheckboxChange} from '@angular/material/checkbox';
 
@@ -17,8 +17,10 @@ export class MaskComponent implements OnInit {
   computedMasks = [];
   masks = [];
   classes = [];
-  
-  constructor(private imageService: ImageService, private route: ActivatedRoute,
+
+  constructor(private imageService: ImageService,
+              private router: Router,
+              private route: ActivatedRoute,
               private apiService: ApiService) {
 
   }
@@ -26,24 +28,24 @@ export class MaskComponent implements OnInit {
   public response;
   stillLoading: boolean;
   ngOnInit(): void {
-    this.send_file(this.imageService.image)
+    this.send_file(this.imageService.image);
   }
-  
+
   send_file(file) {
     const selectedMasks = this.route.snapshot.queryParamMap.get('0');
     console.log(selectedMasks);
-    console.log("Starting api request");
+    console.log('Starting api request');
     this.stillLoading = true;
     this.apiService.getMasks(selectedMasks, file).subscribe(
         data => {
           this.response = data;
-          console.log("Successful API call");
+          console.log('Successful API call');
           console.log(this.response);
           this.stillLoading = false;
           this.extractMasks(this.response);
         },
         error => {
-          console.error("Error during API call");
+          console.error('Error during API call');
         }
     );
   }
@@ -60,13 +62,13 @@ export class MaskComponent implements OnInit {
   }
 
   image_mask_classes() {
-    return this.classes  
+    return this.classes;
   }
-  
+
   image_masks() {
     return this.masks;
   }
-  
+
   form_masks() {
     return this.computedMasks;
   }
@@ -83,4 +85,11 @@ export class MaskComponent implements OnInit {
     }
     this.imageService.setMasks(selectedMasks);
   }
+
+    onSubmit() {
+      console.log('Paint!');
+
+      this.router.navigate(['/painting']);
+
+    }
 }

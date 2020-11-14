@@ -15,3 +15,11 @@
 <div *ngIf="stillLoading" class="spinner-container">
     <mat-spinner style="margin: auto"></mat-spinner>
 </div>
+<div *ngIf="!stillLoading" id="submit-button-container">
+    <button
+            id="submitButton"
+            (click)="onSubmit()"
+            mat-stroked-button
+    >Next
+    </button>
+</div>

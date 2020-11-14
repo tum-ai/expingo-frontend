@@ -1,0 +1,16 @@
+<app-sidebar-title [title]="componentTitle"></app-sidebar-title>
+<div class="title-text">
+    <p>Start the painting AI to fill the masked areas.</p>
+</div>
+
+<div *ngIf="!stillLoading" id="submit-button-container">
+    <button
+            id="submitButton"
+            (click)="onSubmit()"
+            mat-stroked-button
+    >Paint
+    </button>
+</div>
+<div *ngIf="stillLoading" class="spinner-container">
+    <mat-spinner style="margin: auto"></mat-spinner>
+</div>

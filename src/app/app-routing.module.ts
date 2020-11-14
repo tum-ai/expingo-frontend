@@ -37,6 +37,17 @@ const routes: Routes = [
       }
     ]
   },
+  {
+    path: '',
+    component: ContentLayoutComponent,
+    children: [
+      {
+        path: 'painting',
+        loadChildren: () =>
+            import('./modules/inpainting/inpainting.module').then(m => m.InpaintingModule)
+      }
+    ]
+  },
   { path: '**', redirectTo: 'upload', pathMatch: 'full' },
 ];
 
