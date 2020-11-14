@@ -1,10 +1,10 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import {ImageService} from '../../../core/service/image.service';
-import {ApiService} from "../../../core/service/api.service";
+import {MaskService} from '../../../core/service/mask.service';
 import {FormControl} from '@angular/forms';
 import {ActivatedRoute, Router} from '@angular/router';
-import {Observable, throwError} from 'rxjs';
 import {MatCheckboxChange} from '@angular/material/checkbox';
+import mergeImages from 'merge-images';
 
 @Component({
   selector: 'app-mask',
@@ -14,38 +14,33 @@ import {MatCheckboxChange} from '@angular/material/checkbox';
 export class MaskComponent implements OnInit {
 
   componentTitle = 'Masking';
-  computedMasks = [];
-  masks = [];
-  classes = [];
 
-  constructor(private imageService: ImageService,
-              private router: Router,
-              private route: ActivatedRoute,
-              private apiService: ApiService) {
+  maskForms = [];     // This variable contains names and form controls for the masks
+  masks = [];             // The masks are stored here after the API call
+  classes = [];           // The classese for the masks
 
+  constructor(private imageService: ImageService, private route: ActivatedRoute,
+              private apiService: MaskService, private router: Router) {
   }
 
-  public response;
   stillLoading: boolean;
+
   ngOnInit(): void {
-    this.send_file(this.imageService.image);
+    this.sendFile(this.imageService.image);
   }
 
-  send_file(file) {
+  sendFile(file) {
     const selectedMasks = this.route.snapshot.queryParamMap.get('0');
     console.log(selectedMasks);
-    console.log('Starting api request');
     this.stillLoading = true;
     this.apiService.getMasks(selectedMasks, file).subscribe(
         data => {
-          this.response = data;
-          console.log('Successful API call');
-          console.log(this.response);
+          console.log(data);
           this.stillLoading = false;
-          this.extractMasks(this.response);
+          this.extractMasks(data);
         },
         error => {
-          console.error('Error during API call');
+          console.error(error);
         }
     );
   }
@@ -54,36 +49,40 @@ export class MaskComponent implements OnInit {
     this.masks = response.masks;
     this.classes = response.classes;
     let index = 1;
-    for (let cl of this.classes) {
-      this.computedMasks.length = 0;
-      this.computedMasks.push({name: 'Mask' + index + ': ' +cl, form: new FormControl()});
+    this.maskForms.length = 0;
+    for (const cl of this.classes) {
+      this.maskForms.push({name: 'Mask' + index + ': ' + cl, form: new FormControl()});
       index++;
     }
   }
 
-  image_mask_classes() {
+  imageMaskClasses() {
     return this.classes;
   }
 
-  image_masks() {
-    return this.masks;
+  formMask() {
+    return this.maskForms;
   }
 
-  form_masks() {
-    return this.computedMasks;
-  }
-
-  ChangeMasks($event: MatCheckboxChange) {
-    console.log("Mask change detected");
-    let selectedMasks = [];
+  ChangeMasks(_: MatCheckboxChange) {
+    const selectedMasks = [];
     let index = 0;
-    for (let checkbox of this.computedMasks) {
+    for (const checkbox of this.maskForms) {
       if (checkbox.form.value === true) {
         selectedMasks.push(this.masks[index]);
       }
       index++;
     }
-    this.imageService.setMasks(selectedMasks);
+    if (selectedMasks.length > 0) {
+      mergeImages(selectedMasks)
+          .then(b64 => {
+            this.imageService.setCombinedMask(b64);
+            this.imageService.displayCurrentImage();
+          });
+    } else {
+      this.imageService.setCombinedMask('');
+      this.imageService.displayCurrentImage();
+    }
   }
 
     onSubmit() {
