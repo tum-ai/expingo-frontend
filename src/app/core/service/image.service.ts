@@ -6,30 +6,36 @@ import {EventEmitter, Injectable, Output} from '@angular/core';
 export class ImageService {
 
   @Output() imageChanged = new EventEmitter();
-  image: any;
-  masks: any;
-  display_image: any = '../../../assets/images/street.jpg';
-  constructor() { }
 
-  displayImage(imageFile: any) {
+  image: any;
+  combinedMask: any;
+  currentImage: any;
+
+  constructor() {
+    this.combinedMask = '';
+  }
+
+  uploadImage(imageFile: any) {
+    console.log(imageFile);
     this.image = imageFile;
     const fileReader = new FileReader();
     fileReader.onloadend = (e) => {
-      this.imageChanged.emit(fileReader.result);
-      this.display_image = fileReader.result;
+      this.currentImage = fileReader.result;
+      this.displayCurrentImage();
+
     };
     fileReader.readAsDataURL(imageFile);
   }
 
-  reloadCurrentImage() {
-    this.imageChanged.emit(this.display_image);
+  displayCurrentImage() {
+    this.imageChanged.emit(this.currentImage);
   }
-  
-  setMasks(masks: any) {
-    this.masks = masks;
+
+  public setCombinedMask(combinedMask) {
+    this.combinedMask = combinedMask;
   }
-  
-  getMasks() {
-    return this.masks;
+
+  public getCombinedMask() {
+    return this.combinedMask;
   }
 }

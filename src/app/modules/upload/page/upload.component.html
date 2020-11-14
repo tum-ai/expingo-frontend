@@ -18,6 +18,7 @@
             id="nextButton"
             [routerLink]="'/segmentation'"
             mat-stroked-button
+            [disabled]="!this.imageUploaded"
     >Next
     </button>
 </div>

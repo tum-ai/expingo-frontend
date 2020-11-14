@@ -30,7 +30,7 @@ export class ImageSegComponent implements OnInit {
       private router: Router,
       private route: ActivatedRoute
   ) {
-    this.imageService.reloadCurrentImage();
+    this.imageService.displayCurrentImage();
   }
 
   ngOnInit() {

@@ -10,21 +10,22 @@ export class UploadComponent implements OnInit {
 
   componentTitle = 'Upload Image';
   file: any;
-  @ViewChild("fileUpload", {static: false}) fileUpload: ElementRef;
+  @ViewChild('fileUpload', {static: false}) fileUpload: ElementRef;
+  imageUploaded = false;
 
   constructor(private imageService: ImageService) { }
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void { }
 
   uploadImage() {
     const dialog = this.fileUpload.nativeElement;
     dialog.click();
+    this.imageUploaded = true;
   }
 
   onFileChanged(event: any) {
     this.file = event.target.files[0];
-    this.imageService.displayImage(this.file);
+    this.imageService.uploadImage(this.file);
   }
 
 

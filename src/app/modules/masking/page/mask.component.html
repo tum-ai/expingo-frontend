@@ -6,7 +6,7 @@
 <div class="mask-checkboxes">
     <div>
         <ul style="list-style-type: none">
-            <li *ngFor="let object of form_masks()">
+            <li *ngFor="let object of formMask()">
                 <mat-checkbox [formControl]="object.form" (change)="ChangeMasks($event)">{{object.name}}</mat-checkbox>
             </li>
         </ul>
