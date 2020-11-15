@@ -6,8 +6,8 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class MaskService {
-  //private readonly maskingURL = 'https://expingo-mask-service-oztyeiy7sa-uc.a.run.app/getMasks/';
-  private readonly maskingURL = 'http://localhost:8080/getMasks/';
+  private readonly maskingURL = 'https://expingo-mask-service-oztyeiy7sa-uc.a.run.app/getMasks/';
+  //private readonly maskingURL = 'http://localhost:8080/getMasks/';
 
   constructor(private http: HttpClient) { }
 
