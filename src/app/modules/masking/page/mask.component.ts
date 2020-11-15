@@ -37,8 +37,8 @@ export class MaskComponent implements OnInit {
   }
 
   sendFile(file) {
-    const selectedMasks = this.route.snapshot.queryParamMap.get('0');
-    console.log(selectedMasks);
+    const selectedMasks = this.route.snapshot.queryParamMap.getAll('0');
+    console.log("Selected masks: " + selectedMasks);
     this.allowContinuation = false;
     this.apiService.getMasks(selectedMasks, file).subscribe(
         data => {

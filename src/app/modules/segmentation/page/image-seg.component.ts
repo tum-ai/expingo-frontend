@@ -56,6 +56,6 @@ export class ImageSegComponent implements OnInit {
           }
       }
       console.log(selectedObjects);
-      this.router.navigate(['/masking'], { relativeTo: this.route, queryParams: selectedObjects});
+      this.router.navigate(['/masking'], { relativeTo: this.route, queryParams: {'0': selectedObjects}});
   }
 }
