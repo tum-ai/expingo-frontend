@@ -25,16 +25,21 @@ export class MaskComponent implements OnInit {
               private paintingRequestStorage: PaintingRequestStorageService) {
   }
 
+  allowContinuation: boolean;
+  noMaskFound: boolean;
   stillLoading: boolean;
 
   ngOnInit(): void {
+    this.noMaskFound = false;
+    this.allowContinuation = false;
+    this.stillLoading = true;
     this.sendFile(this.imageService.image);
   }
 
   sendFile(file) {
     const selectedMasks = this.route.snapshot.queryParamMap.get('0');
     console.log(selectedMasks);
-    this.stillLoading = true;
+    this.allowContinuation = false;
     this.apiService.getMasks(selectedMasks, file).subscribe(
         data => {
           console.log(data);
@@ -56,6 +61,9 @@ export class MaskComponent implements OnInit {
       this.maskForms.push({name: 'Mask' + index + ': ' + cl, form: new FormControl()});
       index++;
     }
+    if (index === 1) {
+      this.noMaskFound = true;
+    }
   }
 
   imageMaskClasses() {
@@ -76,23 +84,29 @@ export class MaskComponent implements OnInit {
       index++;
     }
     if (selectedMasks.length > 0) {
+      this.allowContinuation = true;
       mergeImages(selectedMasks)
           .then(b64 => {
             this.imageService.setCombinedMask(b64);
             this.imageService.displayCurrentImage();
           });
     } else {
+      this.allowContinuation = false;
       this.imageService.setCombinedMask('');
       this.imageService.displayCurrentImage();
     }
   }
 
-    onSubmit() {
-      console.log('Paint!');
-      this.paintingRequestStorage.storeRequest(
-        this.imageService.getCurrentImage(),
-        this.imageService.getCombinedMask()
-    );
-      this.router.navigate(['/painting']);
-    }
+  onReturn() {
+    this.router.navigate(['/upload']);
+  }
+
+  onSubmit() {
+    console.log('Paint!');
+    this.paintingRequestStorage.storeRequest(
+      this.imageService.getCurrentImage(),
+      this.imageService.getCombinedMask()
+  );
+    this.router.navigate(['/painting']);
+  }
 }
