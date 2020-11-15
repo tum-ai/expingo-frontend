@@ -9,7 +9,7 @@ export class ImageService {
 
   image: any;
   combinedMask: any;
-  private currentImage: any;
+  public currentImage: any;
 
   constructor() {
     this.combinedMask = '';
