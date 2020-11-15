@@ -12,7 +12,6 @@ export class InpaintingService {
   constructor(private http: HttpClient) { }
 
   paintImage(image, mask): Observable<any> {
-    const headers = new HttpHeaders({'Content-Type': 'application/json', 'accept': 'image/png'})
-    return this.http.post<any>(this.impaintingURL, {image: image, mask: mask}, {responseType: "blob" as "json", headers: headers});
+    return this.http.post<any>(this.impaintingURL, {image: image, mask: mask});
   }
 }

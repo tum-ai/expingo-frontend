@@ -35,12 +35,8 @@ export class InpaintingComponent implements OnInit {
     ).subscribe(
         data => {
           this.response = data;
-          const reader = new FileReader();
-          reader.onloadend = (e) => {
-            this.imageService.resetMasks()
-            this.imageService.setImageFromBase64(reader.result);
-          };
-          reader.readAsDataURL(data);
+          this.imageService.resetMasks()
+          this.imageService.setImageFromBase64(data.image);
           console.log(this.response);
           this.stillLoading = false;
         },
