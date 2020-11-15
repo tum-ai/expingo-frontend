@@ -13,11 +13,15 @@ export class PaintingRequestStorageService {
   private request: PaintingRequest;
   constructor() { }
 
-  storeRequest(request: PaintingRequest) {
-    this.request = request;
+  storeRequest(image: any, mask: any) {
+    this.request = new PaintingRequest(image, mask);
   }
 
-  getStoredRequest(): PaintingRequest  {
-      return this.request;
+  getStoredMask()  {
+      return this.request.mask;
+  }
+
+  getStoredImage() {
+      return this.request.image;
   }
 }
