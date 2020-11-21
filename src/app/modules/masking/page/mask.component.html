@@ -15,6 +15,17 @@
 <div *ngIf="stillLoading" class="spinner-container">
     <mat-spinner style="margin: auto"></mat-spinner>
 </div>
+<div *ngIf="error" class="title-text">
+    <p>Unfortunately, an error occured. Please try again.</p>
+</div>
+<div *ngIf="error" id="back-button-container">
+    <button
+            id="backButton"
+            [routerLink]="'/upload'"
+            mat-stroked-button
+    >Start over
+    </button>
+</div>
 <div *ngIf="allowContinuation" id="submit-button-container">
     <button
             id="submitButton"

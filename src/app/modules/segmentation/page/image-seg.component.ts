@@ -23,6 +23,10 @@ export class ImageSegComponent implements OnInit {
       {name: 'dog', form: new FormControl()},
       {name: 'airplane', form: new FormControl()},
       {name: 'toilet', form: new FormControl()},
+      {name: 'bicycle', form: new FormControl()},
+      {name: 'bus', form: new FormControl()},
+      {name: 'train', form: new FormControl()},
+      {name: 'boat', form: new FormControl()},
   ];
 
   constructor(

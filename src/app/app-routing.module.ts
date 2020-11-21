@@ -5,6 +5,9 @@ import {ContentLayoutComponent} from './layout/content-layout/content-layout.com
 
 const routes: Routes = [
   {
+    path: '', redirectTo: '/upload', pathMatch: 'full'
+  },
+  {
     path: '',
     component: ContentLayoutComponent,
     children: [

@@ -12,6 +12,8 @@ import {ImageService} from "../../../core/service/image.service";
 export class InpaintingComponent implements OnInit {
   componentTitle = 'Paint';
   stillLoading = false;
+  finished = false;
+  error = false;
   public response;
   base64data: any;
 
@@ -39,10 +41,19 @@ export class InpaintingComponent implements OnInit {
           this.imageService.setImageFromBase64(data.image);
           console.log(this.response);
           this.stillLoading = false;
+          this.finished = true;
         },
         error => {
           console.log(error);
+          this.error = true;
         }
     );
+  }
+  
+  onDownload() {
+      var a = document.createElement("a");
+      a.href = this.imageService.getCurrentImage();
+      a.download = "image-painted-ai-tum.png";
+      a.click();
   }
 }

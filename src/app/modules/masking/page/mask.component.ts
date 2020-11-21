@@ -28,6 +28,7 @@ export class MaskComponent implements OnInit {
   allowContinuation: boolean;
   noMaskFound: boolean;
   stillLoading: boolean;
+  error = false;
 
   ngOnInit(): void {
     this.noMaskFound = false;
@@ -48,6 +49,8 @@ export class MaskComponent implements OnInit {
         },
         error => {
           console.error(error);
+          this.stillLoading = false;
+          this.error = true;
         }
     );
   }

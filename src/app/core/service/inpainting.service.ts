@@ -7,7 +7,7 @@ import {HttpClient, HttpHeaders} from '@angular/common/http';
 })
 export class InpaintingService {
   private readonly impaintingURL = 'https://expingo-inpaint-service-oztyeiy7sa-uc.a.run.app/inpaint/';
-  //private readonly impaintingURL = 'http://localhost:8081/inpaint/';
+  //private readonly impaintingURL = 'http://localhost:8080/inpaint/';
 
   constructor(private http: HttpClient) { }
 

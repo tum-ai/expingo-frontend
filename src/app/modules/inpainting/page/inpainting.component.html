@@ -3,7 +3,7 @@
     <p>Start the painting AI to fill the masked areas.</p>
 </div>
 
-<div *ngIf="!stillLoading" id="submit-button-container">
+<div *ngIf="!stillLoading && !finished" id="submit-button-container">
     <button
             id="submitButton"
             (click)="onSubmit()"
@@ -13,4 +13,23 @@
 </div>
 <div *ngIf="stillLoading" class="spinner-container">
     <mat-spinner style="margin: auto"></mat-spinner>
+</div>
+<div *ngIf="finished" id="download-button-container">
+    <button
+            id="downloadButton"
+            (click)="onDownload()"
+            mat-stroked-button
+    >Download
+    </button>
+</div>
+<div *ngIf="error" class="title-text">
+    <p>Unfortunately, an error occured. Please try again.</p>
+</div>
+<div *ngIf="finished || error" id="back-button-container">
+    <button
+            id="backButton"
+            [routerLink]="'/upload'"
+            mat-stroked-button
+    >Start over
+    </button>
 </div>

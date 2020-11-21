@@ -4,7 +4,7 @@
 .title-text {
   font-family: "Product Sans Regular", sans-serifi, serif;
   font-size: 22px;
-  margin: 50px auto auto auto;
+  margin: 50px 30px 10px 10px;
   text-align: center;
   line-height: $sidebar-title-height; /* Vertically alligns text */
   color: black;
@@ -43,6 +43,22 @@
 #returnButton {
   height: 60px;
   width: auto;
+  margin: auto;
+  background-color: $theme-color-4;
+  color: white;
+  border-style: solid;
+  font-size: 28px;
+  box-shadow: 8px 8px 3px silver;
+}
+
+#back-button-container {
+  margin-top: 50px;
+  display: flex;
+}
+
+#backButton {
+  height: 60px;
+  width: 160px;
   margin: auto;
   background-color: $theme-color-4;
   color: white;
